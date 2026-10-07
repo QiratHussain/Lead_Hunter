@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero mb-5">
+    <p class="eyebrow">PYTHON AUTOMATION PROJECT</p>
+
+    <h1>Find business leads automatically.</h1>
+
+    <p class="lead">
+        Search for businesses, visit their public websites,
+        and collect useful contact information.
+    </p>
+</div>
+
+
+<div class="card search-card mb-5">
+
+    <div class="card-body">
+
+        <h2 class="h4 mb-3">Find new leads</h2>
+
+        <form action="/search" method="POST">
+
+            <div class="row g-3">
+
+                <div class="col-md-5">
+                    <label class="form-label">
+                        Business type
+                    </label>
+
+                    <input
+                        type="text"
+                        name="keyword"
+                        class="form-control"
+                        placeholder="e.g. dental clinic"
+                        required
+                    >
+                </div>
+
+
+                <div class="col-md-5">
+                    <label class="form-label">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        class="form-control"
+                        placeholder="e.g. Lahore"
+                        required
+                    >
+                </div>
+
+
+                <div class="col-md-2 d-flex align-items-end">
+                    <button class="btn btn-primary w-100">
+                        Search
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% if searched %}
+
+<div class="alert alert-success">
+    Search completed.
+    Found {{ found }} possible websites for
+    <strong>{{ keyword }}</strong> in
+    <strong>{{ location }}</strong>.
+</div>
+
+{% endif %}
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <div>
+        <h2 class="h4 mb-1">Saved leads</h2>
+        <p class="text-secondary mb-0">
+            {{ leads|length }} leads in your database
+        </p>
+    </div>
+
+</div>
+
+
+<div class="table-responsive">
+
+<table class="table table-dark table-hover align-middle">
+
+    <thead>
+        <tr>
+            <th>Business</th>
+            <th>Website</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Source</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for lead in leads %}
+
+        <tr>
+
+            <td>
+                {{ lead["name"] }}
+            </td>
+
+            <td>
+                <a
+                    href="{{ lead['website'] }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Visit
+                </a>
+            </td>
+
+            <td>
+                {% if lead["email"] %}
+                    {{ lead["email"] }}
+                {% else %}
+                    <span class="muted">Not found</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if lead["phone"] %}
+                    {{ lead["phone"] }}
+                {% else %}
+                    <span class="muted">Not found</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {{ lead["source"] }}
+            </td>
+
+        </tr>
+
+    {% else %}
+
+        <tr>
+            <td colspan="5" class="text-center py-5">
+                No leads yet. Run your first search above.
+            </td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
