@@ -1,0 +1,94 @@
+body {
+    background: #0b0d10;
+    color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background: #11151a;
+    border-bottom: 1px solid #272c33;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero {
+    max-width: 720px;
+}
+
+.eyebrow {
+    color: #8ea2b7;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero .lead {
+    color: #aeb8c2;
+}
+
+.search-card {
+    background: #12161b;
+    border: 1px solid #272c33;
+    border-radius: 14px;
+}
+
+.form-control {
+    background: #0b0d10;
+    border: 1px solid #343b44;
+    color: white;
+}
+
+.form-control:focus {
+    background: #0b0d10;
+    color: white;
+    border-color: #718096;
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: #68727e;
+}
+
+.btn-primary {
+    border: none;
+    font-weight: 600;
+}
+
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    color: #aeb8c2;
+}
+
+.muted {
+    color: #66717d;
+}
+
+a {
+    color: #9fc5ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+}
